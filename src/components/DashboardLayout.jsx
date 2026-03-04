@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { useNavigate, NavLink } from "react-router-dom";
 
 const DashboardLayout = ({ children }) => {
   const { logout } = useContext(AuthContext);
@@ -18,11 +17,45 @@ const DashboardLayout = ({ children }) => {
         </h2>
 
         <nav className="space-y-4 flex-1">
-          <div className="text-indigo-400">Dashboard</div>
-          <div className="text-gray-400 hover:text-white cursor-pointer">Projects</div>
-          <div className="text-gray-400 hover:text-white cursor-pointer">API Keys</div>
-          <div className="text-gray-400 hover:text-white cursor-pointer">Analytics</div>
-          <div className="text-gray-400 hover:text-white cursor-pointer">Settings</div>
+
+          <NavLink
+            to="/dashboard"
+            className={({ isActive }) =>
+              isActive
+                ? "block text-indigo-400 font-semibold"
+                : "block text-gray-400 hover:text-white"
+            }
+          >
+            Dashboard
+          </NavLink>
+
+          <NavLink
+            to="/ai-tools"
+            className={({ isActive }) =>
+              isActive
+                ? "block text-indigo-400 font-semibold"
+                : "block text-gray-400 hover:text-white"
+            }
+          >
+            AI Tools
+          </NavLink>
+        <NavLink
+          to="/github"
+          className={({ isActive }) =>
+            isActive
+              ? "block text-indigo-400 font-semibold"
+              : "block text-gray-400 hover:text-white"
+          }
+        >
+          GitHub
+        </NavLink>
+          <div className="text-gray-400 hover:text-white cursor-pointer">
+            Projects
+          </div>
+
+          <div className="text-gray-400 hover:text-white cursor-pointer">
+            Analytics
+          </div>
         </nav>
 
         <button
